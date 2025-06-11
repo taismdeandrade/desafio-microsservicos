@@ -1,0 +1,260 @@
+{
+	"info": {
+		"_postman_id": "61a4af47-8d86-4fb0-8d47-b04044505fb7",
+		"name": "Desafio MS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "40954801"
+	},
+	"item": [
+		{
+			"name": "Cadastro",
+			"item": [
+				{
+					"name": "Cadastra novo pet",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"petName\": \"zulu\",\r\n        \"petSpecies\": \"gato\",\r\n        \"tutorName\": \"Joao\",\r\n        \"tutorEmail\": \"joao@gmail.com\",\r\n        \"petRace\": \"abyssinian\",\r\n        \"petBirth\": \"2023-12-10\",\r\n        \"petWeight\": 3.0,\r\n        \"petColor\": \"marrom\",\r\n        \"petDescription\": \"gato macho\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/api/pets/"
+					},
+					"response": []
+				},
+				{
+					"name": "Busca por id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>Timestamp</th>\r",
+									"        <th>Status</th>\r",
+									"        <th>Error</th>\r",
+									"        <th>Trace</th>\r",
+									"        <th>Message</th>\r",
+									"        <th>Path</th>\r",
+									"    </tr>\r",
+									"    <tr>\r",
+									"        <td>{{response.timestamp}}</td>\r",
+									"        <td>{{response.status}}</td>\r",
+									"        <td>{{response.error}}</td>\r",
+									"        <td>{{response.trace}}</td>\r",
+									"        <td>{{response.message}}</td>\r",
+									"        <td>{{response.path}}</td>\r",
+									"    </tr>\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return { response: pm.response.json() }\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8080/api/pets/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Atualiza os dados do  pet",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"petName\": \"zulu\",\r\n        \"petSpecies\": \"gato\",\r\n        \"tutorName\": \"Joao\",\r\n        \"tutorEmail\": \"joao@gmail.com\",\r\n        \"petRace\": \"abyssinian\",\r\n        \"petBirth\": \"2023-12-10\",\r\n        \"petWeight\": 4.0,\r\n        \"petColor\": \"marrom\",\r\n        \"petDescription\": \"gato macho\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/api/pets/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Excluir um pet",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "http://localhost:8080/api/pets/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Lista todos os pets cadastrados",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8080/api/pets"
+					},
+					"response": []
+				},
+				{
+					"name": "Busca por raca",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/pets/racas?race=abyssinian",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"pets",
+								"racas"
+							],
+							"query": [
+								{
+									"key": "race",
+									"value": "abyssinian"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Busca por especie",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/pets/especies?species=gato",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"pets",
+								"especies"
+							],
+							"query": [
+								{
+									"key": "species",
+									"value": "gato"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Agenda",
+			"item": [
+				{
+					"name": "Lista todos os agendamentos",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8082/api/agenda"
+					},
+					"response": []
+				},
+				{
+					"name": "Filtra por nome do pet",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/api/agenda/nome?petName=zulu",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"api",
+								"agenda",
+								"nome"
+							],
+							"query": [
+								{
+									"key": "petName",
+									"value": "zulu"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cria um agendamento manual",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"petId\":1,\r\n    \"appointmentDate\":\"2025-04-06\",\r\n    \"serviceType\":\"vacina\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8082/api/agenda"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
