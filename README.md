@@ -49,7 +49,7 @@
 
 ### Passos para rodar os serviços
 1. Clone o repositório
-   - `$git clone git@git.gft.com:tsea/desafio-microsservicos.git`
+   - `$git clone git@github.com:taismdeandrade/desafio-microsservicos.git`
    - Acesse a pasta do projeto: `cd desafio-microsservicos`
 
 2. Configure o banco de dados
